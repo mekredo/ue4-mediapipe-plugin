@@ -1,5 +1,6 @@
-using UnrealBuildTool;
+using System;
 using System.IO;
+using UnrealBuildTool;
 
 public class MediaPipe : ModuleRules
 {
@@ -59,7 +60,11 @@ public class MediaPipe : ModuleRules
         string MPBinDir = Path.Combine(ThirdPartyDir, "mediapipe", "Binaries", BinArch);
         string MPDataDir = Path.Combine(ThirdPartyDir, "mediapipe", "Data");
 
-        AddDep("opencv_world3410", DllExt, MPBinDir, BinaryOutputDir);
+        //var EngineDir = Path.GetFullPath(Target.RelativeEnginePath);
+        //string OpenCVPath = Path.Combine(EngineDir, "Plugins", "Runtime", "OpenCV", "Binaries", "ThirdParty", BinArch);
+
+        //AddDep("opencv_world455", DllExt, OpenCVPath, BinaryOutputDir);
+        //RuntimeDependencies.Add(Path.Combine(EngineDir, "Plugins", "Runtime", "OpenCV", "opencv_world455.dll"));
         AddDep("ump_shared", DllExt, MPBinDir, BinaryOutputDir);
 
         if (Target.Type != TargetType.Editor)
